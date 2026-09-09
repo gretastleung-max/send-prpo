@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Merchant PO Payment Automation</title>
+
+<style>
+
+:root{
+    --primary:#005a9c;
+    --secondary:#0078d4;
+    --bg:#f5f7fa;
+    --card:#ffffff;
+    --text:#333;
+    --success:#107c10;
+    --warning:#ff8c00;
+    --danger:#d13438;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Segoe UI,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+header{
+    background:linear-gradient(135deg,#005a9c,#0078d4);
+    color:white;
+    padding:50px 40px;
+}
+
+header h1{
+    font-size:36px;
+    margin-bottom:10px;
+}
+
+header p{
+    font-size:18px;
+    opacity:.95;
+}
+
+nav{
+    position:sticky;
+    top:0;
+    background:white;
+    padding:15px;
+    box-shadow:0 2px 6px rgba(0,0,0,.1);
+    z-index:999;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+nav a{
+    text-decoration:none;
+    color:var(--primary);
+    font-weight:600;
+}
+
+.container{
+    max-width:1400px;
+    margin:auto;
+    padding:30px;
+}
+
+.section{
+    margin-bottom:40px;
+}
+
+.section h2{
+    color:var(--primary);
+    margin-bottom:15px;
+    border-left:5px solid var(--secondary);
+    padding-left:10px;
+}
+
+.card{
+    background:var(--card);
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+    margin-bottom:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+.badge{
+    display:inline-block;
+    background:#e8f2ff;
+    color:var(--primary);
+    padding:6px 12px;
+    border-radius:20px;
+    margin:3px;
+}
+
+.success{
+    color:var(--success);
+    font-weight:bold;
+}
+
+.warning{
+    color:var(--warning);
+    font-weight:bold;
+}
+
+.danger{
+    color:var(--danger);
+    font-weight:bold;
+}
+
+pre{
+    background:#222;
+    color:#00ff8a;
+    padding:15px;
+    border-radius:6px;
+    overflow:auto;
+}
+
+ul{
+    margin-left:20px;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    background:#003b6f;
+    color:white;
+}
+
+.timeline{
+    border-left:4px solid var(--secondary);
+    padding-left:20px;
+}
+
+.timeline div{
+    margin-bottom:20px;
+}
+
+.flow{
+    text-align:center;
+    line-height:2;
+    font-weight:600;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Merchant PO Payment Notification & CAP Submission Automation</h1>
+    <p>Software Requirement Specification (SRS) Showroom</p>
+</header>
+
+<nav>
+<ul>
+<li>#overviewOverview</a></li>
+<li>#architectureArchitecture</a></li>
+<li>#outlookOutlook</a></li>
+<li>#filesInput Files</a></li>
+<li>#validationValidation</a></li>
+<li>#processWorkflow</a></li>
+<li>#emailEmail</a></li>
+<li>#capCAP</a></li>
+<li>#errorsError Handling</a></li>
+<li>#modulesModules</a></li>
+</ul>
+</nav>
+
+<div class="container">
+
+<section id="overview" class="section">
+<h2>Business Objective</h2>
+
+<div class="card">
+<p>
+Automate monthly Merchant PO processing including PO retrieval,
+attachment download, Sales Order Statement preparation,
+merchant notification, CAP submission, master list update,
+exception reporting and operational tracking.
+</p>
+
+<br>
+
+<span class="badge">400+ POs / Month</span>
+<span class="badge">Outlook Automation</span>
+<span class="badge">CAP Integration</span>
+<span class="badge">Microsoft Graph API</span>
+
+</div>
+</section>
+
+<section id="architecture" class="section">
+
+<h2>System Architecture</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Email Platform</h3>
+<ul>
+<li>Outlook Desktop</li>
+<li>Outlook Web (OWA)</li>
+<li>Shared Mailbox</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Technology</h3>
+<ul>
+<li>Python 3.x</li>
+<li>Microsoft Graph API</li>
+<li>OpenPyXL</li>
+<li>PDF Generation</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Authentication</h3>
+<ul>
+<li>Entra ID</li>
+<li>Client Secret</li>
+<li>Certificate</li>
+<li>Interactive Login</li>
+</ul>
+</div>
+
+</div>
+
+</section>
+
+<section id="outlook" class="section">
+
+<h2>Outlook Integration</h2>
+
+<div class="card">
+
+<h3>Supported Outlook Environments</h3>
+
+<ul>
+<li>Outlook Desktop</li>
+<li>Outlook Web</li>
+<li>Shared Mailbox</li>
+</ul>
+
+<br>
+
+<h3>Source Folder</h3>
+
+<pre>PCCW Purchase Order</pre>
+
+<h3>Email Eligibility</h3>
+
+<ul>
+<li>Sender = bss-no-reply@pccw.com</li>
+<li>Subject starts with PCCW Purchase Order No.</li>
+<li>Contains PDF attachment</li>
+<li>PO exists in Master List</li>
+</ul>
+
+</div>
+
+</section>
+
+<section id="files" class="section">
+
+<h2>Input Files</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Master List</h3>
+
+<ul>
+<li>Company Name</li>
+<li>Sales Mode</li>
+<li>PIC</li>
+<li>PO no.</li>
+<li>PO# filled and PDF</li>
+<li>Sent PO to merchants</li>
+<li>Sent invoice to CAP</li>
+</ul>
+
+</div>
+
+<div class="card">
+<h3>Supplier Contact</h3>
+
+<ul>
+<li>Supplier</li>
+<li>Contact Email</li>
+</ul>
+
+</div>
+
+<div class="card">
+<h3>PO Receiver</h3>
+
+<ul>
+<li>PO Receiver Email</li>
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="validation" class="section">
+
+<h2>Validation Rules</h2>
+
+<div class="card">
+
+<ul>
+<li>Validate filenames</li>
+<li>Validate worksheet names</li>
+<li>Validate required fields</li>
+<li>Cross-file supplier matching</li>
+<li>Email format validation</li>
+<li>PO consistency validation</li>
+<li>Sales Mode validation</li>
+</ul>
+
+</div>
+
+</section>
+
+<section id="process" class="section">
+
+<h2>End-To-End Workflow</h2>
+
+<div class="card flow">
+
+Master List + Supplier Contact<br>
+
+↓<br>
+
+Validate Files & Folders<br>
+
+↓<br>
+
+Download PO Email Attachments<br>
+
+↓<br>
+
+Create PO Folder<br>
+
+↓<br>
+
+Generate Sales Order Statement<br>
+
+↓<br>
+
+Generate PDF<br>
+
+↓<br>
+
+Send Merchant Email<br>
+
+↓<br>
+
+Send CAP Email<br>
+
+↓<br>
+
+Update Master List<br>
+
+↓<br>
+
+Generate Reports
+
+</div>
+
+</section>
+
+<section id="email" class="section">
+
+<h2>Merchant Email Process</h2>
+
+<div class="card">
+
+<h3>Recipients</h3>
+
+<ul>
+<li>Supplier Contact Email</li>
+<li>PIC Email(s)</li>
+<li>HKT_theclub_payment@pccw.com</li>
+<li>Op Team Receiver Email(s)</li>
+</ul>
+
+<h3>Attachments</h3>
+
+<ul>
+<li>PO PDF</li>
+<li>Sales Order Statement PDF</li>
+<li>Sales Order Statement Excel</li>
+</ul>
+
+</div>
+
+</section>
+
+<section id="cap" class="section">
+
+<h2>CAP Submission</h2>
+
+<div class="card">
+
+<h3>Target Mailbox</h3>
+
+<pre>PORPA@pccw.com</pre>
+
+<h3>Supported Files</h3>
+
+<pre>
+PO1601777-A.pdf
+DNPO1601777-B.pdf
+</pre>
+
+<h3>Logic</h3>
+
+<p>
+Group files by PO Number and create
+one CAP email per PO.
+</p>
+
+</div>
+
+</section>
+
+<section id="errors" class="section">
+
+<h2>Error Handling Framework</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3 class="danger">Fatal</h3>
+<ul>
+<li>Authentication Failed</li>
+<li>Config Missing</li>
+<li>Master List Missing</li>
+</ul>
+</div>
+
+<div class="card">
+<h3 class="danger">Record Error</h3>
+<ul>
+<li>Missing Supplier Email</li>
+<li>Missing Attachment</li>
+<li>Invalid Template</li>
+</ul>
+</div>
+
+<div class="card">
+<h3 class="warning">Warning</h3>
+<ul>
+<li>Duplicate PO Email</li>
+<li>PO Not Found</li>
+<li>Extra Supplier Found</li>
+</ul>
+</div>
+
+<div class="card">
+<h3 class="success">Information</h3>
+<ul>
+<li>PO Downloaded</li>
+<li>Email Sent</li>
+<li>PDF Generated</li>
+</ul>
+</div>
+
+</div>
+
+</section>
+
+<section id="modules" class="section">
+
+<h2>Python Module Design</h2>
+
+<div class="card">
+
+<pre>
+merchant_po_automation/
+
+main.py
+
+auth/
+ └─ graph_auth.py
+
+outlook/
+ ├─ graph_mail.py
+ ├─ po_email_downloader.py
+ ├─ merchant_mail_sender.py
+ └─ cap_mail_sender.py
+
+excel/
+ ├─ master_list.py
+ ├─ supplier_contact.py
+ └─ statement_generator.py
+
+validation/
+ ├─ file_validator.py
+ ├─ folder_validator.py
+ └─ business_validator.py
+
+reports/
+ ├─ exception_report.py
+ └─ summary_report.py
+
+config.json
+</pre>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>Future Enhancements</h2>
+
+<div class="card">
+
+<ul>
+<li>Power Automate Integration</li>
+<li>SharePoint Repository</li>
+<li>Teams Notification</li>
+<li>Dashboard & KPI Reporting</li>
+<li>Scheduled Execution</li>
+<li>OCR Invoice Processing</li>
+<li>Approval Workflow</li>
+</ul>
+
+</div>
+
+</section>
+
+</div>
+
+<footer>
+Merchant PO Payment Automation | Project Showroom
+</footer>
+
+<script>
+
+document.querySelectorAll('nav a')
+.forEach(link=>{
+    link.addEventListener('click',function(e){
+        e.preventDefault();
+
+        document.querySelector(
+            this.getAttribute('href')
+        ).scrollIntoView({
+            behavior:'smooth'
+        });
+    });
+});
+
+</script>
+
+</body>
+</html>
