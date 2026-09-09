@@ -1,130 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>Merchant PO Automation - AI Developer Specification</title>
+<title>
+Merchant PO Payment Notification &
+CAP Submission Automation
+</title>
 
-<style>
-body{
-    font-family:Segoe UI,Arial,sans-serif;
-    background:#f6f8fa;
-    margin:0;
-    color:#333;
-}
-
-header{
-    background:#005a9c;
-    color:white;
-    padding:40px;
-}
-
-h1{
-    margin:0;
-}
-
-nav{
-    background:white;
-    padding:15px;
-    position:sticky;
-    top:0;
-    box-shadow:0 2px 6px rgba(0,0,0,.1);
-}
-
-nav a{
-    text-decoration:none;
-    margin-right:20px;
-    color:#005a9c;
-    font-weight:bold;
-}
-
-.container{
-    max-width:1200px;
-    margin:auto;
-    padding:30px;
-}
-
-.section{
-    background:white;
-    padding:25px;
-    margin-bottom:25px;
-    border-radius:10px;
-    box-shadow:0 2px 8px rgba(0,0,0,.08);
-}
-
-h2{
-    color:#005a9c;
-}
-
-pre{
-    background:#1e1e1e;
-    color:#90ee90;
-    padding:15px;
-    overflow:auto;
-    border-radius:6px;
-}
-
-.badge{
-    display:inline-block;
-    background:#e8f2ff;
-    color:#005a9c;
-    padding:6px 12px;
-    border-radius:15px;
-    margin:3px;
-}
-</style>
+css/style.css
 </head>
 
 <body>
 
-<header>
-<h1>Merchant PO Payment Notification & CAP Submission Automation</h1>
-<p>AI Developer Specification v1.0</p>
+<header class="hero">
+    <div class="container">
+
+        <h1>
+            Merchant PO Payment Notification &
+            CAP Submission Automation
+        </h1>
+
+        <p>
+            AI Developer Specification &
+            Software Requirement Portal
+        </p>
+
+        <div class="badges">
+            <span>Python</span>
+            <span>Microsoft Graph API</span>
+            <span>Outlook Desktop</span>
+            <span>Outlook Web</span>
+            <span>Shared Mailbox</span>
+        </div>
+
+    </div>
 </header>
 
-<nav>
-<a href="#objective">Objectivef="#outlook">Outlook SupportInput Files</a>
-#workflowWorkflow</a>
-<a href="#email">ail</a>
-#capCAP</a>
-<aeportReporting</a>
+<nav class="navbar">
+
+<a href="#verview</a>
+<a href="#scope">Scope</a>
+reArchitecture</a>
+<a href="#authentication">Authenticationf="#files">Input Files</a>
+Validation</a>
+<a href="#orkflow</a>
+<a href="#merchantEmail</a>
+<a href="#cap">dulesPython Modules</a>
+<arrorsError Handling</a>
+
 </nav>
 
-<div class="container">
+<main class="container">
 
-<div class="section" id="objective">
-<h2>1. Objective</h2>
+<section id="overview">
+
+<h2>Business Objective</h2>
 
 <p>
-Develop a Python automation solution to streamline monthly merchant PO processing.
+Automate monthly Merchant PO Payment activities.
 </p>
-
-<div class="badge">Outlook Desktop</div>
-<div class="badge">Outlook Web</div>
-<div class="badge">Microsoft Graph API</div>
-<div class="badge">Shared Mailbox</div>
-<div class="badge">CAP Robot</div>
 
 <ul>
 <li>Download PO documents from Outlook</li>
-<li>Generate sales order statement</li>
+<li>Prepare Sales Order Statement</li>
 <li>Send merchant emails</li>
-<li>Submit CAP invoices</li>
-<li>Update master list</li>
-<li>Generate reports</li>
+<li>Submit invoice to CAP Robot</li>
+<li>Update Master List</li>
+<li>Generate exception reports</li>
+<li>Generate processing summary</li>
 </ul>
-</div>
 
-<div class="section" id="outlook">
-<h2>2. Outlook Platform Requirements</h2>
+</section>
 
-<h3>Supported Platforms</h3>
+<section id="scope">
+
+<h2>Solution Scope</h2>
+
+<div class="card-grid">
+
+<div class="card">
+<h3>Included</h3>
 
 <ul>
-<li>Outlook Desktop Application</li>
+<li>File Validation</li>
+<li>Folder Validation</li>
+<li>Outlook Retrieval</li>
+<li>PO Download</li>
+<li>PDF Generation</li>
+<li>Merchant Email</li>
+<li>CAP Submission</li>
+<li>Reporting</li>
+</ul>
+
+</div>
+
+<div class="card">
+<h3>Excluded</h3>
+
+<ul>
+<li>PO Creation</li>
+<li>Invoice Approval Workflow</li>
+<li>OCR Processing</li>
+<li>ERP Integration</li>
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="architecture">
+
+<h2>System Architecture</h2>
+
+<pre>
+Master List
+Supplier Contact
+PO Receiver
+
+        ↓
+
+Microsoft Graph API
+
+        ↓
+
+Python Automation
+
+        ↓
+
+PO Download
+
+        ↓
+
+Sales Order Statement
+
+        ↓
+
+Merchant Email
+
+        ↓
+
+CAP Submission
+
+        ↓
+
+Reports
+</pre>
+
+</section>
+
+<section id="authentication">
+
+<h2>Authentication Design</h2>
+
+<h3>Supported Outlook Platforms</h3>
+
+<ul>
+<li>Outlook Desktop</li>
 <li>Outlook Web (OWA)</li>
-<li>Shared Mailboxes</li>
+<li>Shared Mailbox</li>
 </ul>
 
 <h3>Required Integration Method</h3>
@@ -133,28 +171,45 @@ Develop a Python automation solution to streamline monthly merchant PO processin
 Microsoft Graph API
 </pre>
 
-<h3>Must NOT Depend On</h3>
+<h3>Authentication Methods</h3>
+
+<ul>
+<li>Client Secret</li>
+<li>Certificate Authentication</li>
+<li>Interactive Login</li>
+</ul>
+
+<h3>Recommended Design</h3>
 
 <pre>
-win32com
-Local Outlook Installation
-</pre>
-
-<h3>Authentication</h3>
-
-<pre>
+Python Script
+        ↓
 Microsoft Entra ID
-
-Supported:
-- Client Secret
-- Certificate Authentication
-- Interactive Login
+        ↓
+Access Token
+        ↓
+Microsoft Graph API
+        ↓
+Mailbox / Email Access
 </pre>
 
-</div>
+<h3>Required Graph Permissions</h3>
 
-<div class="section" id="files">
-<h2>3. Input Files</h2>
+<pre>
+Mail.Read
+Mail.ReadWrite
+Mail.Send
+User.Read
+
+Mail.Read.Shared
+Mail.Send.Shared
+</pre>
+
+</section>
+
+<section id="files">
+
+<h2>Input Files</h2>
 
 <h3>Master List</h3>
 
@@ -181,164 +236,275 @@ Contact Email
 PO Receiver email
 </pre>
 
-</div>
+</section>
 
-<div class="section" id="workflow">
-<h2>4. Processing Workflow</h2>
+<section id="validation">
 
-<pre>
-Validate Input Files
-      ↓
-Validate Folders
-      ↓
-Retrieve PO Emails
-      ↓
-Download Attachments
-      ↓
-Generate Sales Order Statement
-      ↓
-Generate PDF
-      ↓
-Send Merchant Emails
-      ↓
-Send CAP Emails
-      ↓
-Update Master List
-      ↓
-Generate Reports
-</pre>
-
-</div>
-
-<div class="section">
-<h2>5. Outlook Email Retrieval</h2>
-
-<pre>
-Mailbox:
-Configurable
-
-Folder:
-PCCW Purchase Order
-
-Sender:
-bss-no-reply@pccw.com
-
-Subject:
-Starts with:
-PCCW Purchase Order No.
-</pre>
-
-<p>Duplicate Email Handling:</p>
-
-<pre>
-Use latest email
-Continue processing
-Generate warning
-</pre>
-
-</div>
-
-<div class="section">
-<h2>6. Sales Order Statement</h2>
+<h2>Validation Rules</h2>
 
 <ul>
-<li>Select template by Sales Mode</li>
-<li>Validate Vendor Name</li>
-<li>Populate PO Number</li>
-<li>Rename Excel</li>
-<li>Generate Landscape PDF</li>
-<li>Update "PO# filled and PDF"</li>
+<li>Required file existence</li>
+<li>Worksheet validation</li>
+<li>Column validation</li>
+<li>Email validation</li>
+<li>Company ↔ Supplier matching</li>
+<li>Duplicate PO validation</li>
+<li>Sales Mode validation</li>
+<li>Status column validation</li>
 </ul>
 
-</div>
-
-<div class="section" id="email">
-<h2>7. Merchant Email</h2>
-
-<h3>Recipients</h3>
+<h3>Company Matching Rule</h3>
 
 <pre>
-To:
+Ignore Spaces
+Case Insensitive
+</pre>
+
+</section>
+
+<section id="workflow">
+
+<h2>End-to-End Workflow</h2>
+
+<pre>
+Validate Files
+
+     ↓
+
+Validate Folders
+
+     ↓
+
+Retrieve PO Email
+
+     ↓
+
+Download Attachments
+
+     ↓
+
+Create Folder
+
+     ↓
+
+Generate Statement
+
+     ↓
+
+Generate PDF
+
+     ↓
+
+Send Merchant Email
+
+     ↓
+
+Submit CAP Email
+
+     ↓
+
+Update Master List
+
+     ↓
+
+Generate Summary Report
+</pre>
+
+</section>
+
+<section id="merchant">
+
+<h2>Merchant Email Process</h2>
+
+<h3>Email To</h3>
+
+<pre>
 Supplier Contact Email
+</pre>
 
-CC:
+<h3>Email CC</h3>
+
+<pre>
 PIC Email(s)
+
 HKT_theclub_payment@pccw.com
-PO Receiver Email(s)
+
+Op Team PO Receiver Email(s)
 </pre>
 
-<h3>Attachments</h3>
+<h3>Required Attachments</h3>
+
+<ul>
+<li>PO PDF</li>
+<li>Sales Order Statement PDF</li>
+<li>Sales Order Statement Excel</li>
+</ul>
+
+</section>
+
+<section id="cap">
+
+<h2>CAP Submission</h2>
+
+<h3>Mailbox</h3>
 
 <pre>
-1 x PO PDF
-1 x Sales Order Statement PDF
-1 x Sales Order Statement Excel
-</pre>
-
-</div>
-
-<div class="section" id="cap">
-<h2>8. CAP Submission</h2>
-
-<pre>
-Recipient:
 PORPA@pccw.com
-
-Subject:
-PO Payment Validation PO <PO Number>
-
-One Email Per PO
-Group PO/DNPO Files
 </pre>
 
-</div>
-
-<div class="section">
-<h2>9. Error Handling Strategy</h2>
+<h3>Email Subject</h3>
 
 <pre>
-Fatal
-- Stop Program
-
-Record Error
-- Skip PO
-- Continue
-
-Warning
-- Continue
-
-Info
-- Log Only
+PO Payment Validation PO &lt;PO Number&gt;
 </pre>
 
-</div>
-
-<div class="section" id="report">
-<h2>10. Reports</h2>
-
-<h3>Exception Report</h3>
+<h3>Grouping Logic</h3>
 
 <pre>
-Company Name
-PO Number
-Error Type
-Error Description
-Processing Date
+PO12345-A.pdf
+
+DNPO12345-B.pdf
+
+↓
+
+1 CAP Email
 </pre>
 
-<h3>Summary Report</h3>
+</section>
+
+<section id="modules">
+
+<h2>Python Module Design</h2>
 
 <pre>
-PO Downloaded
-Merchant Emails Sent
-CAP Emails Sent
-Warnings
-Exceptions
+main.py
+
+auth/
+ └─ graph_auth.py
+
+core/
+ ├─ workflow_manager.py
+ ├─ status_manager.py
+ └─ report_manager.py
+
+outlook/
+ ├─ graph_mail.py
+ ├─ po_email_downloader.py
+ ├─ merchant_mail_sender.py
+ └─ cap_mail_sender.py
+
+excel/
+ ├─ master_list.py
+ ├─ supplier_contact.py
+ └─ statement_generator.py
+
+validation/
+ ├─ file_validator.py
+ ├─ folder_validator.py
+ └─ business_validator.py
+
+cap/
+ └─ cap_file_matcher.py
+
+reports/
+ ├─ exception_report.py
+ └─ summary_report.py
 </pre>
 
-</div>
+</section>
 
-</div>
+<section id="errors">
+
+<h2>Error Handling Framework</h2>
+
+<h3>Level 1 - Fatal</h3>
+
+<ul>
+<li>Graph Authentication Failed</li>
+<li>Master List Missing</li>
+<li>Config Missing</li>
+<li>Cannot Open Excel</li>
+</ul>
+
+<h3>Level 2 - Record Error</h3>
+
+<ul>
+<li>Missing Supplier Email</li>
+<li>Invalid Template</li>
+<li>Missing Attachment</li>
+</ul>
+
+<h3>Level 3 - Warning</h3>
+
+<ul>
+<li>Duplicate PO Email</li>
+<li>PO Not Found</li>
+<li>Extra Supplier Found</li>
+</ul>
+
+<h3>Level 4 - Information</h3>
+
+<ul>
+<li>PO Downloaded</li>
+<li>PDF Generated</li>
+<li>Email Sent</li>
+</ul>
+
+<h3>Error Code Convention</h3>
+
+<pre>
+AUTH_001 Authentication Failed
+
+VALID_001 Missing Column
+
+PO_001 PO Email Not Found
+
+MAIL_001 Vendor Email Missing
+
+MAIL_002 Missing Attachment
+
+CAP_001 Invalid Invoice Filename
+
+SYS_001 File Locked
+</pre>
+
+</section>
+
+<section>
+
+<h2>Configuration Example</h2>
+
+<pre>
+{
+  "tenant_id": "xxxxx",
+  "client_id": "xxxxx",
+  "client_secret": "xxxxx",
+
+  "mailbox":
+  "merchant.payment@company.com",
+
+  "outlook_folder":
+  "PCCW Purchase Order",
+
+  "cap_mailbox":
+  "PORPA@pccw.com",
+
+  "hard_cc": [
+    "HKT_theclub_payment@pccw.com"
+  ]
+}
+</pre>
+
+</section>
+
+</main>
+
+<footer>
+Merchant PO Payment Notification &
+CAP Submission Automation
+</footer>
+
+js/app.jsscript>
 
 </body>
-</html>
+</html
